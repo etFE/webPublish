@@ -2,7 +2,7 @@ const express = require('express');
 const connectHistoryApiFallback = require('connect-history-api-fallback');
 const server = express()
 
-// server.use(express.static('public'));
+server.use(express.static('public'));
 
 server.use('/', connectHistoryApiFallback());
 server.use('/', express.static('webRoot'));
