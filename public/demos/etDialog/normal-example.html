@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <link rel="stylesheet" href="../../democreate/highlight.css">
+  <script src="http://apps.bdimg.com/libs/highlight.js/9.1.0/highlight.min.js"></script>
+
+  <link rel="stylesheet" href="../../democreate/democreate.css">
+  <style>
+    body {
+      padding: 20px;
+    }
+    button {
+      margin: 0;
+    }
+    p {
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <p>点击下面按钮，通过父页面，全屏打开一个页面</p>
+    <button id="parent_open">全屏打开</button>
+    <pre><code class="javascript">// 通过父页面 全屏打开一个子页面
+parent.$.etDialog.open({
+  url: './max-example.html',
+  isMax: true,
+  frameName: window.name, // 重要参数，必写
+  title: '全屏的子页面',
+})</code></pre>
+
+    <button id="close">关闭当前页面</button>
+    <pre><code class="javascript">// 在当前子页面中关闭自身窗口
+var curIndex = parent.$.etDialog.getFrameIndex(window.name);
+parent.$.etDialog.close(curIndex);</code></pre>
+
+    <p>执行父页面的方法，或者拿取父页面的数据，父页面需要全局暴露</p>
+    <pre><code class="javascript">// 执行父页面的查询方法
+parent.query();
+// 获取父页面全局的grid参数，并进行相关操作
+parent.grid.getAllData();</code></pre>
+  </div>
+
+  <script>
+    hljs.initHighlightingOnLoad();
+
+    var save = function () {
+      console.log('你点击了确定按钮， 执行了子页面的保存方法')
+    }
+
+    document.querySelector('#parent_open').onclick = function () {
+      parent.$.etDialog.open({
+        url: './max-example.html',
+        isMax: true,
+        frameName: window.name,
+        title: '全屏的子页面',
+      })
+    }
+    document.querySelector('#close').onclick = function () {
+      var curIndex = parent.$.etDialog.getFrameIndex(window.name);
+      parent.$.etDialog.close(curIndex);
+    }
+  </script>
+</body>
+</html>

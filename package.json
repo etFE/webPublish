@@ -1,0 +1,24 @@
+{
+  "name": "webpublish",
+  "version": "1.0.0",
+  "description": "1.存储线上发布项目\r 2.存储一些静态的资源文件\r 3.用于线上访问",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/etFE/webPublish.git"
+  },
+  "author": "katte",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/etFE/webPublish/issues"
+  },
+  "homepage": "https://github.com/etFE/webPublish#readme",
+  "dependencies": {
+    "connect-history-api-fallback": "^1.5.0",
+    "express": "^4.16.3"
+  }
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" style="overflow: hidden;">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../../jquery/jquery-1.9.0.min.js"></script>
+  <link rel="stylesheet" href="../../etPlugins/common.css">
+
+  <link rel="stylesheet" href="../../democreate/highlight.css">
+  <script src="http://apps.bdimg.com/libs/highlight.js/9.1.0/highlight.min.js"></script>
+
+  <link rel="stylesheet" href="../../democreate/democreate.css">
+  <script src="../../democreate/democreate.js"></script>
+</head>
+
+<body>
+  <script>
+    hljs.initHighlightingOnLoad();
+
+    var createDemo = $.createDemo({
+      template:
+        `<div class="mian">
+          <table class="table-layout">
+            <tr>
+              <td class="label">输入框</td>
+              <td class="ipt">
+                <input id="" type="text" />
+              </td>
+            </tr>
+            <tr>
+              <td class="label">输入框</td>
+              <td class="ipt">
+                <input id="" type="text" />
+              </td>
+            </tr>
+          </table>
+          <div id="mainGrid">
+            《——————————————————————————》<br/>
+            《 ———————— 这里假装有一个表格 ———————— 》<br/>
+            《——————————————————————————》<br/>
+          </div>
+        </div>`,
+      type: 'common',
+      option: {},
+      title: '常用的表单加表格布局',
+      description:
+        `常用布局，复制后填充即可<br/>
+        通过"tr"控制行。"label"宽默认为80像素，如果字符比较长，需要手动在标签中写长度来避免换行，
+        例如"style='width:100px'"
+        `,
+      htmlCode:
+`<div class="mian">
+  <table class="table-layout">
+    <tr>
+      <td class="label">输入框</td>
+      <td class="ipt">
+        <input id="" type="text" />
+      </td>
+    </tr>
+    <tr>
+      <td class="label">输入框</td>
+      <td class="ipt">
+        <input id="" type="text" />
+      </td>
+    </tr>
+  </table>
+  <div id="mainGrid"></div>
+</div>`,
+      jsCode:
+``,
+    col: 2,
+    })
+  </script>
+</body>
+
+</html>

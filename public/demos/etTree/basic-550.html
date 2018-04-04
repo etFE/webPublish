@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" style="overflow: hidden;">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../../jquery/jquery-1.9.0.min.js"></script>
+  <script src="../../etPlugins/etTree.min.js"></script>
+
+  <link rel="stylesheet" href="../../democreate/highlight.css">
+  <script src="http://apps.bdimg.com/libs/highlight.js/9.1.0/highlight.min.js"></script>
+
+  <link rel="stylesheet" href="../../democreate/democreate.css">
+  <script src="../../democreate/democreate.js"></script>
+</head>
+
+<body>
+  <script>
+    hljs.initHighlightingOnLoad();
+
+    var createDemo = $.createDemo({
+      template:
+        `<div id="mainTree"></div>`,
+      type: 'etTree',
+      option: {
+        async: {
+          enable: true,
+          url: 'http://118.178.184.131:9090/tree',
+        },
+        callback: {
+          onClick: function (event, treeId, node) {
+            console.log(node)
+          },
+        },
+      },
+      title: '基本用法',
+      description:
+        `树形组件的基本用法。<br />
+        "async"中的两个参数必填，例子中用了mock，做了请求。<br />
+        "callback"中的"onClick"是点击树节点的回调函数，他会传递"node"节点数据。点击后查看控制台。<br />
+        通过声明的"tree",你可以执行很多方法，比如"tree.getSelectedNodes()"获取树被选中的节点`,
+      htmlCode:
+`<div id="mainTree"></div>`,
+      jsCode:
+`tree = $("#mainTree").etTree({
+  async: {
+    enable: true,
+    url: 'http://118.178.184.131:9090/tree',
+  },
+  callback: {
+    onClick: function (event, treeId, node) {
+      console.log(node)
+    },
+  },
+})
+
+tree.getSelectedNodes(); // ==> 返回树被选中的节点集合
+`,
+    col: 2,
+    })
+  </script>
+</body>
+
+</html>

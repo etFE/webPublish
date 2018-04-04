@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" style="overflow: hidden;">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../../jquery/jquery-1.9.0.min.js"></script>
+  <script src="../../etPlugins/etValidate.min.js"></script>
+
+  <link rel="stylesheet" href="../../democreate/highlight.css">
+  <script src="http://apps.bdimg.com/libs/highlight.js/9.1.0/highlight.min.js"></script>
+
+  <link rel="stylesheet" href="../../democreate/democreate.css">
+  <script src="../../democreate/democreate.js"></script>
+</head>
+
+<body>
+  <script>
+    hljs.initHighlightingOnLoad();
+
+    var createDemo = $.createDemo({
+      template:
+        `<label>文本：</label><input placeholder="输入文本，必填" id="text" type="text" /><br /><br />
+        <label>数字：</label><input placeholder="输入数字，选填" id="number" type="text" />
+        <br /><br />
+        <button id="validate">验证</button>
+        <button id="open_btn">开启文本框验证</button>
+        <button id="close_btn">关闭文本框验证</button>
+        `,
+      type: 'etValidate',
+      option: {
+        config: {},
+        items: [
+          { el: $('#text'), required: true },
+          { el: $('#number'), type: 'number' },
+        ]
+      },
+      title: '基本用法',
+      description:
+        `
+        重要的三个属性，"required"验证必填，"type"验证类型，"test"正则匹配。<br />
+        "config"中可以给"items"的所有组件配置提示文字，也可以单独在"items"中配置。<br />
+        当写了"type"属性，文本框不填不会验证必填，但是填了就会验证类型。<br />
+        验证功能同样适用于"etDatepicker"日期框，"etSelect"下拉框。
+        <br />
+        `,
+      htmlCode:
+`<label>文本：</label>
+<input placeholder="输入文本，必填" id="text" type="text" />
+<label>数字：</label>
+<input placeholder="输入数字，选填" id="number" type="text" />
+<br />
+<button id="validate">验证<button>
+<button id="open_btn">开启数字框验证<button>
+<button id="close_btn">关闭数字框验证<button>`,
+      jsCode:
+`// 初始化
+var formValidate = $.etValidate({
+  config: {},
+  items: [
+    { el: $("#text"), required: true },
+    { el: $("#number"), type: 'number' },
+  ]
+});
+// 验证
+$("#validate").onClick(function () {
+  formValidate.test()
+})
+// 开启验证
+$("#validate").onClick(function () {
+  $('#text').prop('placeholder', '输入文本，必填')
+  validate.openValidate($('#text'))
+})
+// 关闭验证
+$("#validate").onClick(function () {
+  $('#text').prop('placeholder', '输入文本，选填')
+  validate.openValidate($('#text'))
+})
+`,
+    col: 2,
+    })
+
+    var validate = createDemo.plugin;
+
+    validate.items = [
+      { el: $(document).find('#text'), required: true },
+      { el: $(document).find('#number'), type: 'number' },
+    ]
+
+    $(document).find('#validate').on('click', function () {
+      if (validate.test()) {
+        alert('验证通过')
+      }
+    })
+    $(document).find('#open_btn').on('click', function () {
+      var $text = $(document).find('#text');
+      $text.prop('placeholder', '输入文本，必填')
+      validate.openValidate($text)
+    })
+    $(document).find('#close_btn').on('click', function () {
+      var $text = $(document).find('#text');
+      $text.prop('placeholder', '输入文本，选填')
+      validate.closeValidate($text)
+    })
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" style="overflow: hidden;">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../../jquery/jquery-1.9.0.min.js"></script>
+
+  <link rel="stylesheet" href="../../democreate/highlight.css">
+  <script src="http://apps.bdimg.com/libs/highlight.js/9.1.0/highlight.min.js"></script>
+
+  <link rel="stylesheet" href="../../democreate/democreate.css">
+  <script src="../../democreate/democreate.js"></script>
+</head>
+
+<body>
+  <script>
+    hljs.initHighlightingOnLoad();
+
+    var createDemo = $.createDemo({
+      template:
+        ``,
+      type: 'common',
+      option: {},
+      title: '请求方法 ajaxPostData',
+      description:
+        `公用请求方法"ajaxPostData"<br />
+        该函数中已经封装了对成功或错误的提示，通过"etDialog"提示。<br />
+        我们约定，如果你想进行成功提示，在返回的数据中增加"msg"字段，错误字段为"error"，
+        警告字段为"warn"。<br /><br />
+        方法中有一个"delayCallback"属性，他用来控制业务执行先后顺序。默认"false"，如果为"true"
+        那么"success"回调函数，将在你点击成功提示框的确定按钮后才执行。否则直接执行。
+        `,
+      htmlCode:
+``,
+      jsCode:
+`ajaxPostData({
+  url: '',
+  data: {},
+  success: function (result) {
+    // 相关操作
+  },
+})`,
+    col: 2,
+    })
+  </script>
+</body>
+
+</html>

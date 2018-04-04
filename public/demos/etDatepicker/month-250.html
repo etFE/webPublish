@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" style="overflow: hidden;">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../../jquery/jquery-1.9.0.min.js"></script>
+  <script src="../../etPlugins/etDatepicker.min.js"></script>
+
+  <link rel="stylesheet" href="../../democreate/highlight.css">
+  <script src="http://apps.bdimg.com/libs/highlight.js/9.1.0/highlight.min.js"></script>
+
+  <link rel="stylesheet" href="../../democreate/democreate.css">
+  <script src="../../democreate/democreate.js"></script>
+</head>
+
+<body>
+  <script>
+    hljs.initHighlightingOnLoad();
+
+    $.createDemo({
+      template: `<input id="month" type="text">`,
+      type: 'etDatepicker',
+      option: {
+        view: "months",
+        minView: "months",
+        showNav: false,
+        dateFormat: "mm",
+      },
+      title: '月份选择',
+      description:
+        `适用于单独只选择月份。<br />
+        四个参数都是必填。<br />
+        通过"view"和"minView"控制最初显示日期和最小显示日期。<br />
+        "dateFormat"控制输出后的格式。<br />
+        大写的"MM"显示为中文字月份，小写"mm"显示为数字，小写"m"小于10的数字不带0
+        `,
+      htmlCode: `<input id="month" type="text">`,
+      jsCode:
+`var month = $("#month").etDatepicker({
+  view: "months",
+  minView: "months",
+  showNav: false,
+  dateFormat: "mm",
+});
+`,
+    col: 2,
+    })
+  </script>
+</body>
+
+</html>

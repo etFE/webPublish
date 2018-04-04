@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" style="overflow: hidden;">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../../jquery/jquery-1.9.0.min.js"></script>
+  <script src="../../etPlugins/etCheck.min.js"></script>
+
+  <link rel="stylesheet" href="../../democreate/highlight.css">
+  <script src="http://apps.bdimg.com/libs/highlight.js/9.1.0/highlight.min.js"></script>
+
+  <link rel="stylesheet" href="../../democreate/democreate.css">
+  <script src="../../democreate/democreate.js"></script>
+</head>
+
+<body>
+  <script>
+    hljs.initHighlightingOnLoad();
+
+    $.createDemo({
+      template:
+      `<input id="check_defualt" type="checkbox" />
+      <label for="check_defualt">复选框</label>
+      <br>
+      <input id="check_disabled" type="checkbox" />
+      <label for="check_disabled">禁用</label>
+      <br>
+      <input id="check_init" type="checkbox" />
+      <label for="check_init">初始选中</label>`,
+      type: 'etCheck',
+      option: {},
+      title: '基本用法',
+      description:
+        `基本用法，以及初始禁用，初始选中<br>
+        注意"html"的属性，如果你想点击文字也能触发"checkbox"的效果，
+        "label"的"for"属性值要跟"input"的"id"一致。<br>
+        如果想用单选框，把"type"改为"radio"即可。<br>
+        `,
+      htmlCode:
+`<input id="check_defualt" type="checkbox" />
+<label for="check_defualt">复选框</label>
+<br>
+<input id="check_disabled" type="checkbox" />
+<label for="check_disabled">禁用</label>
+<br>
+<input id="check_init" type="checkbox" />
+<label for="check_init">初始选中</label>`,
+      jsCode:
+`var check_defualt = $('#check_defualt').etCheck()
+var check_disabled = $('#check_disabled').etCheck({
+  disabled: true
+})
+var check_init = $('#check_init').etCheck({
+  checked: true,
+  onChange: function (status) {
+    console.log(status); // ==> 查看控制台
+  }
+})
+// 方法的使用
+check_disabled.setEnable(); // 手动设置可用
+check_init.setUncheck(); // 手动取消选择
+`,
+    col: 2,
+    })
+
+    $(document).find('#check_defualt').etCheck()
+    $(document).find('#check_disabled').etCheck({
+      disabled: true
+    })
+    $(document).find('#check_init').etCheck({
+      checked: true,
+      onChange: function (status) {
+        console.log(status);
+      }
+    })
+  </script>
+</body>
+
+</html>

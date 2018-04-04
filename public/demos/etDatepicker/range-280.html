@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" style="overflow: hidden;">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../../jquery/jquery-1.9.0.min.js"></script>
+  <script src="../../etPlugins/etDatepicker.min.js"></script>
+
+  <link rel="stylesheet" href="../../democreate/highlight.css">
+  <script src="http://apps.bdimg.com/libs/highlight.js/9.1.0/highlight.min.js"></script>
+
+  <link rel="stylesheet" href="../../democreate/democreate.css">
+  <script src="../../democreate/democreate.js"></script>
+</head>
+
+<body>
+  <script>
+    hljs.initHighlightingOnLoad();
+
+    $.createDemo({
+      template: `<input id="datepicker" style="width: 200px;" type="text">`,
+      type: 'etDatepicker',
+      option: {
+        range: true,
+        defaultDate: ['yyyy-mm-fd', 'yyyy-mm-ed']
+      },
+      title: '范围选择',
+      description:
+        `日期范围选择。<br />
+        "range"属性为true时，开启范围选择。<br />
+        此时"defaultDate"的值为数组，获取到的值也为数组`,
+      htmlCode: `<input id="datepicker" style="width: 200px;" type="text">`,
+      jsCode:
+`var datepicker = $("#datepicker").etDatepicker({
+  range: true,
+  defaultDate: ['yyyy-mm-fd', 'yyyy-mm-ed']
+})
+datepicker.getValue(); // ==> ['2018-03-01', '2018-03-31']
+`,
+    col: 2,
+    })
+  </script>
+</body>
+
+</html>

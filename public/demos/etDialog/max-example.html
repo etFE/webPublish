@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <link rel="stylesheet" href="../../democreate/highlight.css">
+  <script src="http://apps.bdimg.com/libs/highlight.js/9.1.0/highlight.min.js"></script>
+
+  <link rel="stylesheet" href="../../democreate/democreate.css">
+  <style>
+    body {
+      padding: 20px;
+    }
+    button {
+      margin: 0;
+    }
+    p {
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <button id="close">关闭当前页面</button>
+    <pre><code class="javascript">// 在当前子页面中关闭自身窗口，跟普通的写法一样
+var curIndex = parent.$.etDialog.getFrameIndex(window.name);
+parent.$.etDialog.close(curIndex);</code></pre>
+
+    <p>执行父页面的方法，或者拿取父页面的数据，父页面需要全局暴露</p>
+    <p><b>注意，这里会稍有不同</b>，通过父页面配置的<code>frameName</code>拿到父页的window对象</p>
+    <pre><code class="javascript">// 先做两个声明，parentWindow就是父页的window对象了
+var parentFrameName = parent.$.etDialog.parentFrameName;
+var parentWindow = parent.window[parentFrameName];
+
+// 执行父页面的查询方法
+parentWindow.query();
+// 获取父页面全局的grid参数，并进行相关操作
+parentWindow.grid.getAllData();</code></pre>
+
+    <p>如果你想通过父页面，打开多个现在这种页面，那么就不能再用<code>frameName</code>配置了</p>
+    <p>而是通过<code>frameNameObj</code>参数设置，并添加<code>key</code>来标识页面，标识字段任意写</p>
+    <pre><code class="javascript">parent.$.etDialog.open({
+  url: '...',
+  isMax: true,
+  frameNameObj: { 'add': window.name }, // 用add来标识,打开的是一个添加页
+  title: '全屏的子添加页面',
+})</code></pre>
+
+    <p>如果你想像上面的例子一样有多个这样的打开页面，然后互相拿取数据，那么原来的两个声明将不适用</p>
+    <p>而是要用<code>getFrameName</code>方法，输入获取页的标识，才能取到改页面对象</p>
+    <pre><code class="javascript">var addFrameName = parent.$.etDialog.getFrameName('add');
+var addWindow = parent.window[parentFrameName]; // add标识符页面的window对象
+</code></pre>
+  </div>
+
+  <script>
+    hljs.initHighlightingOnLoad();
+
+    document.querySelector('#close').onclick = function () {
+      var curIndex = parent.$.etDialog.getFrameIndex(window.name);
+      parent.$.etDialog.close(curIndex);
+    }
+  </script>
+</body>
+</html>

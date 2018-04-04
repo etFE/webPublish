@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" style="overflow: hidden;">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../../jquery/jquery-1.9.0.min.js"></script>
+  <script src="../../etPlugins/etSelect.min.js"></script>
+
+  <link rel="stylesheet" href="../../democreate/highlight.css">
+  <script src="http://apps.bdimg.com/libs/highlight.js/9.1.0/highlight.min.js"></script>
+
+  <link rel="stylesheet" href="../../democreate/democreate.css">
+  <script src="../../democreate/democreate.js"></script>
+</head>
+
+<body>
+  <script>
+    hljs.initHighlightingOnLoad();
+
+    $.createDemo({
+      template: `<select id="select" style="width:180px"></select>`,
+      type: 'etSelect',
+      option: {
+        url: "http://118.178.184.131:9090/select",
+        onChange: function (id) {
+          console.log(id)
+        }
+      },
+      title: '基本用法',
+      description:
+        `下拉框基本用法。<br/>
+        "onChange"是下拉框改变时的回调函数，传递切换后的"id"值。<br/>
+        初始默认选择第一条，可以用"defaultValue"属性配置默认值，当值为"'none'"时，不再默认选择。<br/>
+        "getValue"方法可以获得下拉框的值。
+        <br/>`,
+      htmlCode: `<select id="select"></select>`,
+      jsCode:
+`var select = $("#select).etSelect({
+  url: "http://118.178.184.131:9090/select",
+  onChange: function (id) {
+    console.log(id)
+  },
+})
+
+select.getValue(); // ==> 获得下拉框的值
+`,
+    col: 2,
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" style="overflow: hidden;">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../../jquery/jquery-1.9.0.min.js"></script>
+  <script src="../../etPlugins/etDialog.min.js"></script>
+
+  <link rel="stylesheet" href="../../democreate/highlight.css">
+  <script src="http://apps.bdimg.com/libs/highlight.js/9.1.0/highlight.min.js"></script>
+
+  <link rel="stylesheet" href="../../democreate/democreate.css">
+  <script src="../../democreate/democreate.js"></script>
+</head>
+
+<body>
+  <script>
+    hljs.initHighlightingOnLoad();
+
+    $.createDemo({
+      template:
+        `<div class="button-group">
+          <button id="normal_open">打开普通弹窗</button>
+        </div>
+        `,
+      type: 'etDialog',
+      option: {
+      },
+      title: '基本用法',
+      description:
+        `由于项目中页面间使用"iframe"，所以弹窗打开页面分为两种，<br>
+        一种是基于当前页打开的弹窗，另一种是通过父页面打开的弹窗。<br><br>
+        "isMax"参数控制是否全屏，通过"width"，"height"配置窗体高宽。<br>
+        参数"btn1"，是第一个按钮的回调参数，需要手动关闭，"iframeWindow"是子页面的"window"对象，可以用来操作子页面。<br><br>
+        子页面要操作父页面时，记得都要带上"parent."前缀，就能直接操作。<br>
+        其他提示都写在弹出页面中，点击上面按钮查看。
+        `,
+      htmlCode:
+`<div class="button-group">
+  <button id="normal_open">打开普通弹窗</button>
+</div>`,
+      jsCode:
+`$("#normal_open").on("click", function () {
+  // 普通打开的弹窗
+  $.etDialog.open({
+    url: './normal-example.html',
+    width: 600,
+    height: 600,
+    title: '子页面标题',
+    btn: ['确定', '取消'],
+    btn1: function (index, el) {
+      var iframeWindow = window[el.find('iframe').get(0).name];
+      // 这里的iframeWindow表示子页面的window对象，
+      // 然后执行子页面的方法，如保存方法，或拿取全局对象
+      // 然后需要手动关闭
+      iframeWindow.save()
+      $.etDialog.close(index)
+    }
+  })
+})
+
+`,
+    col: 2,
+    })
+
+    $(document).find("#normal_open").on("click", function () {
+      $.etDialog.open({
+        url: './normal-example.html',
+        width: 600,
+        height: 600,
+        title: '子页面标题',
+        btn: ['确定', '取消'],
+        btn1: function (index, el) {
+          var iframeWindow = window[el.find('iframe').get(0).name];
+
+          // 这里的iframeWindow表示子页面的window对象，
+          // 然后执行子页面的方法，如保存方法，或拿取全局对象
+          // 然后需要手动关闭
+          iframeWindow.save(); // ==> 结果请查看控制台
+          $.etDialog.close(index);
+        }
+      })
+    })
+  </script>
+</body>
+
+</html>

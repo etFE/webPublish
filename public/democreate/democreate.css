@@ -1,0 +1,118 @@
+body {
+  font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,\\5FAE\8F6F\96C5\9ED1,Arial,sans-serif;
+  font-size:12px;
+  line-height:1.5;
+  color:#495060;
+  padding: 0;
+  margin: 0;
+  background-color:#fff;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+.demo-container {
+}
+
+.demo-show {
+  padding: 20px 0;
+}
+.demo-show .demo-show-plugin {
+  padding: 0 20px;
+}
+.demo-show .demo-show-title {
+  font-weight: 500;
+  position: relative;
+  margin: 20px 0 10px;
+}
+.demo-show .demo-show-title:before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: #eee;
+  position: absolute;
+  top: 10px;
+  left: 0;
+}
+.demo-show .demo-show-title span {
+  display: inline-block;
+  background: #fff;
+  padding: 0 15px 0 15px;
+  position: relative;
+  margin-left: 30px;
+  font-size: 14px;
+}
+.demo-show .demo-show-tip {
+  font-size: 12px;
+  padding: 0 20px;
+}
+
+.demo-code {
+}
+
+.demo-code .demo-code-html,
+.demo-code .demo-code-javascript {
+  position: relative;
+  padding-top: 10px;
+}
+
+.demo-code .demo-code-html:hover:before,
+.demo-code .demo-code-javascript:hover:before {
+  opacity: 0.6;
+}
+
+.demo-code .demo-code-html:before,
+.demo-code .demo-code-javascript:before {
+  position: absolute;
+  top: 4px;
+  left: 5px;
+  opacity: 0.3;
+}
+.demo-code .demo-code-html:before {
+  content: 'HTML';
+}
+.demo-code .demo-code-javascript:before {
+  content: 'JavaScript';
+}
+.demo-container .demo-show {
+  border-bottom: 1px dashed #eee;
+}
+.demo-container.display-flex .demo-show {
+  border-right: 1px dashed #eee;
+  border-bottom: none;
+}
+.display-flex {
+  display: flex;
+}
+.flex-1 {
+  flex: 1;
+}
+
+button {
+  margin: 12px;
+  box-sizing: border-box;
+  height: 26px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border: 1px solid #aecaf0;
+  background: #e5edf4;
+  outline: none;
+  border-radius: 2px;
+  cursor: pointer;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .1);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .1);
+}
+button:hover {
+  outline: #2196f3 solid 1px;
+}
+input {
+  box-sizing: border-box;
+  width: 180px;
+  height: 26px;
+  padding: 1px 1px 1px 5px;
+  border: 1px solid #aecaf0;
+  border-radius: 1px;
+  outline: none;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .1);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .1);
+}

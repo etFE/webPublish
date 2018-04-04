@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" style="overflow: hidden;">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../../jquery/jquery-1.9.0.min.js"></script>
+  <script src="../../etPlugins/etDatepicker.min.js"></script>
+
+  <link rel="stylesheet" href="../../democreate/highlight.css">
+  <script src="http://apps.bdimg.com/libs/highlight.js/9.1.0/highlight.min.js"></script>
+
+  <link rel="stylesheet" href="../../democreate/democreate.css">
+  <script src="../../democreate/democreate.js"></script>
+</head>
+
+<body>
+  <script>
+    hljs.initHighlightingOnLoad();
+
+    $.createDemo({
+      template: `<input id="date" type="text">`,
+      type: 'etDatepicker',
+      option: {
+        view: "months",
+        minView: "months",
+        dateFormat: "yyyy-mm",
+        defaultDate: true,
+      },
+      title: '年月选择',
+      description:
+        `适用于只选择年份和月份。<br />
+        "view", "minView", "dateFormat"三个参数都是必填。<br />
+        `,
+      htmlCode: `<input id="date" type="text">`,
+      jsCode:
+`var year = $("#date").etDatepicker({
+  view: "months",
+  minView: "months",
+  dateFormat: "yyyy-mm",
+  defaultDate: true,
+});
+`,
+    col: 2,
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" style="overflow: hidden;">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../../jquery/jquery-1.9.0.min.js"></script>
+  <script src="../../etPlugins/etTab.min.js"></script>
+
+  <link rel="stylesheet" href="../../democreate/highlight.css">
+  <script src="http://apps.bdimg.com/libs/highlight.js/9.1.0/highlight.min.js"></script>
+
+  <link rel="stylesheet" href="../../democreate/democreate.css">
+  <script src="../../democreate/democreate.js"></script>
+</head>
+
+<body>
+  <script>
+    hljs.initHighlightingOnLoad();
+
+    var createDemo = $.createDemo({
+      template:
+        `<div id="etTab">
+          <div title="标签一" tabid='tab_1'>
+            <ul>
+              <li>标签一内容</li>
+              <li>标签一内容</li>
+              <li>标签一内容</li>
+            </ul>
+          </div>
+          <div title="标签二" tabid='tab_2'>
+            <ul>
+              <li>标签二内容</li>
+              <li>标签二内容</li>
+              <li>标签二内容</li>
+            </ul>
+          </div>
+      </div>`,
+      type: 'etTab',
+      option: {},
+      title: '基本用法',
+      description:
+        `标签组件的基本用法。<br />
+        该组件用法很简单，重要的是"html"中属性的配置"title"和"tabid"<br />
+        "title"是显示标签的字段。"tabid"是每个标签是标识<br />
+        使用"getStatus"方法可以获取当前"tab"的状态，给你返回了当前活动的"tabid"以及
+        "panel"和"tab"的jq节点对象`,
+      htmlCode:
+`<div id="etTab">
+  <div title="标签一" tabid='tab_1'>
+    标签一内容
+  </div>
+  <div title="标签二" tabid='tab_2'>
+    标签二内容
+  </div>
+</div>`,
+      jsCode:
+`var etTab = $("#etTab").etTab();
+
+etTab.getStatus(); // ==> 返回当前的状态`,
+    col: 2,
+    })
+  </script>
+</body>
+
+</html>

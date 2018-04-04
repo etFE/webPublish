@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" style="overflow: hidden;">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../../jquery/jquery-1.9.0.min.js"></script>
+  <script src="../../etPlugins/etDatepicker.min.js"></script>
+
+  <link rel="stylesheet" href="../../democreate/highlight.css">
+  <script src="http://apps.bdimg.com/libs/highlight.js/9.1.0/highlight.min.js"></script>
+
+  <link rel="stylesheet" href="../../democreate/democreate.css">
+  <script src="../../democreate/democreate.js"></script>
+</head>
+
+<body>
+  <script>
+    hljs.initHighlightingOnLoad();
+
+    $.createDemo({
+      template: `<input id="datepicker" type="text">`,
+      type: 'etDatepicker',
+      option: {
+        defaultDate: true,
+        onChange: function (date) {
+          console.log(date)
+        }
+      },
+      title: '基本用法',
+      description:
+        `"defaultDate"属性控制初始值,默认"false"。为"true"时选中当天。<br />
+        也可以用字符串"yyyy-mm-dd"表示。分别对应当年当月当日。<br />
+        其中，"dd"可以换成"fd"表示当月第一天，"ed"表示当月最后一天<br /><br />
+        "onChange"是常用的改变后回调函数`,
+      htmlCode: `<input id="datepicker" type="text">`,
+      jsCode:
+`var datepicker = $("#datepicker").etDatepicker({
+  defaultDate: true,
+  onChange: function (date) {
+    console.log(date)
+  }
+});
+datepicker.getValue()
+`,
+    col: 2,
+    })
+  </script>
+</body>
+
+</html>

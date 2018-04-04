@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" style="overflow: hidden;">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../../jquery/jquery-1.9.0.min.js"></script>
+  <script src="../../etPlugins/etDialog.min.js"></script>
+
+  <link rel="stylesheet" href="../../democreate/highlight.css">
+  <script src="http://apps.bdimg.com/libs/highlight.js/9.1.0/highlight.min.js"></script>
+
+  <link rel="stylesheet" href="../../democreate/democreate.css">
+  <script src="../../democreate/democreate.js"></script>
+</head>
+
+<body>
+  <script>
+    hljs.initHighlightingOnLoad();
+
+    $.createDemo({
+      template:
+        `<div class="button-group">
+          <button id="success">点击成功</button>
+          <button id="error">点击报错</button>
+          <button id="warn">点击警告</button>
+          <button id="confirm">点击询问</button>
+        </div>
+        `,
+      type: 'etDialog',
+      option: {
+      },
+      title: '基本用法',
+      description:
+        `普通信息弹窗。<br>
+        参数配置也很简单。第一个参数为提示信息，第二个参数是点击确定后的"success"回调函，
+        然后要手动关闭弹窗。<br>
+        "confirm"有第三个参数，即取消的"cancel"回调函数，执行后自动关闭弹窗。<br><br>
+        所有弹窗的回调函数都会传递两个参数，"index"和"el"。<br>
+        "index"表示弹窗的标识，控制弹窗时会要传递该参数，<br>
+        "el"表示弹窗的"dom"对象，可以找到里面的所有节点。
+        `,
+      htmlCode:
+`<div class="button-group">
+  <button id="success">点击成功</button>
+  <button id="error">点击报错</button>
+  <button id="warn">点击警告</button>
+  <button id="confirm">点击询问</button>
+</div>`,
+      jsCode:
+`$("#success").on("click", function () {
+  $.etDialog.success('成功了！')
+})
+$("#error").on("click", function () {
+  $.etDialog.error('失败了！')
+})
+$("#warn").on("click", function () {
+  $.etDialog.warn('警告！警告！')
+})
+$("#confirm").on("click", function () {
+  $.etDialog.confirm(
+    '你确定吗？',
+    function (index, el) {
+      $.etDialog.close(index)
+      // 点击确定后执行代码
+      // 这里的弹窗需要手动关闭
+    },
+    function (index, el) {
+      // 点击取消后执行代码
+      // 弹窗会自动关闭
+    }
+  )
+})
+`,
+    col: 2,
+    })
+
+    $(document).find("#success").on("click", function () {
+      $.etDialog.success('成功了！')
+    })
+    $(document).find("#error").on("click", function () {
+      $.etDialog.error('失败了！')
+    })
+    $(document).find("#warn").on("click", function () {
+      $.etDialog.warn('警告！警告！')
+    })
+    $(document).find("#confirm").on("click", function () {
+      $.etDialog.confirm(
+        '你确定吗？',
+        function (index, el) {
+          $.etDialog.close(index)
+          // 点击确定后执行代码
+          // 这里的弹窗需要手动关闭
+        },
+        function (index, el) {
+          // 点击取消后执行代码
+          // 弹窗会自动关闭
+        }
+      )
+    })
+  </script>
+</body>
+
+</html>
