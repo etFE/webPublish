@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" style="overflow: hidden;">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../../jquery/jquery-1.9.0.min.js"></script>
+  <script src="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.min.js "></script>
+  <script src="../../etPlugins/etGrid.min.js"></script>
+
+  <link rel="stylesheet" href="../../democreate/highlight.css">
+  <script src="http://apps.bdimg.com/libs/highlight.js/9.1.0/highlight.min.js"></script>
+
+  <link rel="stylesheet" href="../../democreate/democreate.css">
+  <script src="../../democreate/democreate.js"></script>
+</head>
+
+<body>
+  <script>
+    hljs.initHighlightingOnLoad();
+
+    $.createDemo({
+      template:
+        `<div id='grid'></div>`,
+      type: 'etGrid',
+      option: {
+        height: 300,
+        freezeCols: 1,
+        columns: [{
+          display: 'a',
+          name: 'a',
+          width: 120
+        }, {
+          display: 'b',
+          name: 'b',
+          width: 120,
+        }, {
+          display: 'c',
+          name: 'c',
+          width: 120
+        },
+        { display: 'd', name: 'd', width: 120 },
+        { display: 'e', name: 'e', width: 120 },
+        ],
+        dataModel: {
+          url: 'http://118.178.184.131:9090/static_column/grid'
+        }
+      },
+      title: '冻结列设置',
+      description:
+        `在全局对象 "obj" 设置 "freezeCols" 参数 <br>
+数值为"1"时代表冻结一列，为"2"时，冻结两列，以此类推。<br>
+拖动下边滚动条查看效果
+        `,
+      htmlCode:
+        `<div id='grid'></div>`,
+      jsCode:
+        `var columns = [
+  { display: 'a', name: 'a', width: 120 },
+  { display: 'b', name: 'b', width: 120 },
+  { display: 'c', name: 'c', width: 120 },
+  { display: 'd', name: 'd', width: 120 },
+  { display: 'e', name: 'e', width: 120 },
+]
+var obj = {
+  height: 400,
+  freezeCols: 1,
+  columns: columns,
+};
+obj.dataModel:{
+  url: 'http://118.178.184.131:9090/static_column/grid'
+}
+$('#grid').etGrid(obj)`,
+      col: 2,
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" style="overflow: hidden;">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../../jquery/jquery-1.9.0.min.js"></script>
+  <script src="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.min.js "></script>
+  <script src="../../etPlugins/etGrid.min.js"></script>
+
+  <link rel="stylesheet" href="../../democreate/highlight.css">
+  <script src="http://apps.bdimg.com/libs/highlight.js/9.1.0/highlight.min.js"></script>
+
+  <link rel="stylesheet" href="../../democreate/democreate.css">
+  <script src="../../democreate/democreate.js"></script>
+</head>
+
+<body>
+  <script>
+    hljs.initHighlightingOnLoad();
+
+    $.createDemo({
+      template:
+        `<div id='grid'></div>`,
+      type: 'etGrid',
+      option: {
+        height: 300,
+        usePager: true,
+        columns: [{
+          display: 'a',
+          name: 'a',
+          width: 120
+        }, {
+          display: 'b',
+          name: 'b',
+          width: 120,
+        }, {
+          display: 'c',
+          name: 'c',
+          width: 120
+        }],
+        dataModel: {
+          url: 'http://118.178.184.131:9090/static_column/grid',
+        },
+        pageModel: {
+          type: 'remote',
+          rPP: 20
+        }
+      },
+      title: '分页器 是否展现以及本地/后台分页 ',
+      description:
+        `grid 本地数据渲染。<br>
+        在全局配置对象 obj 设置 "usePager"属性 为false 即隐藏分页器 默认为true <br>
+        在全局配置对象 obj 设置 "pageModel"对象 pageModel: { type: 'remote'} (默认为本地分页，不走后台) <br>
+        `,
+      htmlCode:
+        `<div id='grid'"></div>`,
+      jsCode:
+        `var columns = [
+  { display: 'a', name: 'a', width: 120 },
+  { display: 'b', name: 'b', width: 120 },
+  { display: 'c', name: 'c', width: 120 }
+]
+var paramObj = {
+  height: 300,
+  usePager: true,
+  columns: columns,
+  pageModel: {
+    type: 'remote',
+    rPP: 20,
+  },
+  dataModel: {
+    url:'http://118.178.184.131:9090/static_column/grid',
+  }
+};
+$('#grid').etGrid(paramObj)`,
+      col: 2,
+    })
+  </script>
+</body>
+
+</html>

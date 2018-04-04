@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en" style="overflow: hidden;">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../../jquery/jquery-1.9.0.min.js"></script>
+  <script src="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.min.js "></script>
+  <script src="../../etPlugins/etGrid.min.js"></script>
+
+  <link rel="stylesheet" href="../../democreate/highlight.css">
+  <script src="http://apps.bdimg.com/libs/highlight.js/9.1.0/highlight.min.js"></script>
+
+  <link rel="stylesheet" href="../../democreate/democreate.css">
+  <script src="../../democreate/democreate.js"></script>
+</head>
+
+<body>
+  <script>
+    hljs.initHighlightingOnLoad();
+
+    $.createDemo({
+      template:
+        `<div id='grid'></div>`,
+      type: 'etGrid',
+      option: {
+        height: 300,
+        editable: true,
+        columns: [{
+          display: '不可编辑',
+          name: 'a',
+          width: 100,
+          editable: false
+        }, {
+          display: '下拉表格',
+          width: 200,
+          name: 'd',
+          editor: {
+            type: 'grid',
+            resizable: true,
+            columns: [{
+              display: '列头a',
+              width: 120,
+              name: 'a'
+            }, {
+              display: '列头b',
+              width: 120,
+              name: 'b'
+            }, {
+              display: '列头c',
+              width: 120,
+              name: 'c'
+            }, {
+              display: '列头d',
+              width: 120,
+              name: 'd'
+            }],
+            dataModel: {
+              url: 'http://118.178.184.131:9090/static_column/grid',
+            },
+            width: 500,
+            height: 200
+          }
+        }, {
+          display: '下拉框',
+          name: 'b',
+          width: 200,
+          editor: {
+            type: 'select', // 下拉框编辑框
+            keyField: 'id', // 代替valueField 传入后台的字段
+            // source: [{ // 死数据
+            //     label: "c",
+            //     id: 1
+            //   },
+            //   {
+            //     id: 2,
+            //     label: "java"
+            //   },
+            // ],
+            url: 'http://118.178.184.131:9090/select',
+            open: function () { },
+            select: function (ui, item) { },
+            change: function (ui, item) { },
+            focus: function (ui, item) { },
+            close: function () { }
+          },
+        }, {
+          display: '日期选择',
+          name: 'date1',
+          width: 200,
+          editor: {
+            type: 'date', // 日期编辑框
+            onSelect: function () { },
+            beforeShow: function (input, inst) { },
+            onClose: function () { }
+          },
+        }, {
+          display: '普通编辑单元格',
+          name: 'revenues',
+          width: 200
+        }],
+        dataModel: {
+          url: 'http://118.178.184.131:9090/static_column/grid'
+        }
+      },
+      title: '编辑表格',
+      description:
+        `必须设置 "editable: true"属性，在全局对象 "paramObj" 设置，也可以在每一列column设置，若在"column"设置"editable: false"则这列不能编辑 <br>
+        1. 下拉表格 "grid"：<br>
+          <b>注意</b>：下拉框表格字段要与外面表格字段相同,否则无法回充值<br>
+        2. 普通下拉框 "select"。<br>
+          <b>注意</b>：列"name"设置为任意显示字段，"keyField"设为向后台传入的字段<br>
+        3.日期框 "date" <br>
+          <b>注意</b>：关于年选择，或月选择，要这么用,设置"type"为"select",
+          然后"source"字段设置为"getMonthForSelect()"月选择，或"getRecentYearForSelect()"年选择
+        `,
+      htmlCode:
+        `<div id='grid'></div>`,
+      jsCode:
+        `var columns = [
+  { display: '不可编辑', name: 'rank', width: 200, editable: false },
+  { display: '下拉表格', width: 200,
+    editor: {
+      type: 'grid',
+      columns: [
+        { display: '列头a', width: 120, name: 'a' },
+        { display: '列头b', width: 120, name: 'b' },
+        { display: '列头c', width: 120, name: 'c' },
+        { display: '列头d', width: 120, name: 'd' }
+      ],
+      dataModel: {
+        url: 'http://118.178.184.131:9090/static_column/grid',
+      },
+      width: 500,
+      height: 200
+    }
+  },
+  { display: '下拉框', name: 'company', width: 200,
+      editor: {
+      type: 'select',
+      keyField: 'id', // 传入后台的字段
+      url:  'http://118.178.184.131:9090/select',
+      // 也可以写本地数据
+      // source: [
+      //  { label: "c", id: 1 },
+      //  { id: 2, label: "java" },
+      // ],
+      // 下面是各种打开、选择、聚焦、关闭时钩子函数
+      // open: function () {},
+      // select: function (ui, item) {},
+      // change: function (ui, item) {},
+      // focus: function (ui, item) {},
+      // close: function () {}
+    },
+  },
+  { display: '日期选择', name: 'date', width: 200,
+    editor: {
+      type: 'date',
+      // 下面是各种选择 展开前 关闭钩子函数
+      // onSelect: function () {},
+      // beforeShow: function (input, inst) {},
+      // onClose: function () {}
+    },
+  },
+  { display: '普通编辑单元格', name: 'revenues', width: 200 },
+]
+var paramObj = {
+  height: 300,
+  columns: columns,
+  editable: true,
+  dataModel: {
+    url: 'http://118.178.184.131:9090/static_column/grid'
+  }
+};
+$('#grid').etGrid(paramObj)`,
+      col: 1,
+    })
+  </script>
+</body>
+
+</html>

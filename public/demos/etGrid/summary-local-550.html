@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" style="overflow: hidden;">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../../jquery/jquery-1.9.0.min.js"></script>
+  <script src="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.min.js "></script>
+  <script src="../../etPlugins/etGrid.min.js"></script>
+
+  <link rel="stylesheet" href="../../democreate/highlight.css">
+  <script src="http://apps.bdimg.com/libs/highlight.js/9.1.0/highlight.min.js"></script>
+
+  <link rel="stylesheet" href="../../democreate/democreate.css">
+  <script src="../../democreate/democreate.js"></script>
+</head>
+
+<body>
+  <script>
+    hljs.initHighlightingOnLoad();
+
+    $.createDemo({
+      template:
+        `<div id='grid'></div>`,
+      type: 'etGrid',
+      option: {
+        height: 300,
+        editable: true,
+        columns: [
+          { display: 'a', name: 'a', width: 120 },
+          { display: 'number1', name: 'number1', width: 120 },
+          { display: 'number2', name: 'number2', width: 120 }
+        ],
+        dataModel:{
+           url: 'http://118.178.184.131:9090/static_column/grid',
+        },
+        summary: {
+          totalColumns: ['number1', 'number2'],
+          averageColumns: ['number1'],
+          keyWordCol: 'a',   //关键字所在列的列名
+        }
+      },
+      title: '本地渲染合计行',
+      description:
+        `grid 本地渲染合计行。<br>
+        设置"summary"对象属性<br>
+        "keyWordCol": "'rank'",   //关键字所在列的列名 <br>
+        "totalColumns": "['revenues','profits']", // 合计 值为渲染列的"name"数组<br>
+        "averageColumns": "['revenues','profits']",  // 平均值 <br>
+        "maxColumns": "['revenues','profits']",   // 最大数字 <br>
+        "minColumns": "['revenues','profits']" // 最小数字 <br>
+        `,
+      htmlCode:
+        `<div id='grid'></div>`,
+      jsCode:
+`var columns = [
+  { display: 'a', name: 'a', width: 120 },
+  { display: 'number1', name: 'number1', width: 120 },
+  { display: 'number2', name: 'number2', width: 120 }
+]
+var obj = {
+  height: 300,
+  editable: true,
+  columns: columns,
+};
+obj.dataModel = {
+   url:'http://118.178.184.131:9090/static_column/grid',
+};
+obj.summary = {
+  totalColumns: ['number1', 'number2'],
+  averageColumns: ['number1'],
+  keyWordCol: 'a',
+}
+$('#grid').etGrid(obj)`,
+      col: 2,
+    })
+  </script>
+</body>
+
+</html>

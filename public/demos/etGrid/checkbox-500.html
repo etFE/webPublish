@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" style="overflow: hidden;">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../../jquery/jquery-1.9.0.min.js"></script>
+  <script src="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.min.js "></script>
+
+  <link rel="stylesheet" href="../../democreate/highlight.css">
+  <script src="http://apps.bdimg.com/libs/highlight.js/9.1.0/highlight.min.js"></script>
+
+  <link rel="stylesheet" href="../../democreate/democreate.css">
+  <script src="../../etPlugins/etGrid.min.js"></script>
+  <!-- 有样式冲突 所以放在最后 -->
+  <script src="../../democreate/democreate.js"></script>
+</head>
+
+<body>
+  <script>
+    hljs.initHighlightingOnLoad();
+
+    $.createDemo({
+      template:
+        `<div id='grid'></div>`,
+      type: 'etGrid',
+      option: {
+        height: 300,
+        checkbox: true,
+        selectionModel: {
+          mode: 'single'
+        },
+        columns: [{
+          display: 'rank',
+          name: 'a',
+          width: 100
+        }, {
+          display: 'company',
+          name: 'b',
+          width: 100,
+        }, {
+          display: 'revenues',
+          name: 'c',
+          width: 100
+        }],
+        dataModel: {
+          url: 'http://118.178.184.131:9090/static_column/grid'
+        }
+      },
+      title: '复选框 单选/多选',
+      description:
+        `grid 本地数据渲染。<br>
+设置 "checkbox"、"selectionModel" 参数 <br>
+"checkbox": 设置为"false"则为隐藏 <br>
+"selectionModel" 设置此对象里的"mode: 'single'" 为单选 不写默认为多选`,
+      htmlCode:
+        `<div id='grid'"></div>`,
+      jsCode:
+        `var columns = [
+  { display: 'rank', name: 'a', width: 100 },
+  { display: 'company', name: 'b', width: 100 },
+  { display: 'revenues', name: 'c', width: 100 }
+];
+var paramObj = {
+  height: 300,
+  checkbox: true,
+  // 设置单选 默认为多选
+  selectionModel: {
+    mode: 'single'
+  },
+  columns: columns,
+  dataModel: {
+    url: 'http://118.178.184.131:9090/static_column/grid'
+  }
+};
+$('#grid').etGrid(paramObj)`,
+      col: 2,
+    })
+  </script>
+</body>
+
+</html>

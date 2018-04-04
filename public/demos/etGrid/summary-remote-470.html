@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" style="overflow: hidden;">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../../jquery/jquery-1.9.0.min.js"></script>
+  <script src="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.min.js "></script>
+  <script src="../../etPlugins/etGrid.min.js"></script>
+
+  <link rel="stylesheet" href="../../democreate/highlight.css">
+  <script src="http://apps.bdimg.com/libs/highlight.js/9.1.0/highlight.min.js"></script>
+
+  <link rel="stylesheet" href="../../democreate/democreate.css">
+  <script src="../../democreate/democreate.js"></script>
+</head>
+
+<body>
+  <script>
+    hljs.initHighlightingOnLoad();
+
+    $.createDemo({
+      template:
+        `<div id='grid'></div>`,
+      type: 'etGrid',
+      option: {
+        height: 300,
+        summaryRowIndx: [0],
+        columns: [
+          { display: 'number1', name: 'number1', width: 120 },
+          { display: 'number2', name: 'number2', width: 120 },
+          { display: 'number3', name: 'number3', width: 120 },
+        ],
+        dataModel:{
+          url: 'http://118.178.184.131:9090/static_column/grid',
+        },
+      },
+      title: '远程渲染合计行',
+      description:
+        `grid 合计行数据远程计算后渲染, 必须在远程请求时。<br>
+        设置"summaryRowIndx"属性，值为后台合计行所在的索引数组。 <br>
+        例子中，假设第一条数据就是合计行数据。 <br>
+        <b>注意</b> 必须知道所传的合计行数据在所有数据的索引值，否则你无法传值。
+        `,
+      htmlCode:
+        `<div id='grid'></div>`,
+      jsCode:
+`var columns = [
+  { display: 'number1', name: 'number1', width: 120 },
+  { display: 'number2', name: 'number2', width: 120 }
+  { display: 'number3', name: 'number3', width: 120 },
+]
+var paramObj = {
+  editable: true,
+  summaryRowIndx: [0],
+  columns: columns,
+  dataModel: {
+    url: 'http://118.178.184.131:9090/static_column/grid',
+  }
+};
+$('#grid').etGrid(paramObj)`,
+      col: 2,
+    })
+  </script>
+</body>
+
+</html>

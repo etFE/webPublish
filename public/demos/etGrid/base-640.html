@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" style="overflow: hidden;">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../../jquery/jquery-1.9.0.min.js"></script>
+  <script src="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.min.js "></script>
+  <script src="../../etPlugins/etGrid.min.js"></script>
+
+  <link rel="stylesheet" href="../../democreate/highlight.css">
+  <script src="http://apps.bdimg.com/libs/highlight.js/9.1.0/highlight.min.js"></script>
+
+  <link rel="stylesheet" href="../../democreate/democreate.css">
+  <script src="../../democreate/democreate.js"></script>
+</head>
+
+<body>
+  <script>
+    hljs.initHighlightingOnLoad();
+
+    $.createDemo({
+      template:
+        `<div id='grid'></div>`,
+      type: 'etGrid',
+      option: {
+        height: 300,
+        // inWindowHeight: true,
+        columns: [{
+          display: 'rank',
+          name: 'rank',
+          width: 60
+        }, {
+          display: 'company',
+          name: 'company',
+          width: 160,
+        }, {
+          display: 'revenues',
+          name: 'revenues',
+          width: 160
+        }],
+        dataModel: {
+          url: 'http://118.178.184.131:9090/static_column/grid',
+        }
+      },
+      title: '基本用法',
+      description:
+        `grid 基本用法。<br>
+        "inWindowHeight" 此参数设置是否以窗口("window")高度为准来计算表格高度 默认为"false", 若"true"且"height:'100%'" 则会自窗口高度,铺满窗口出表格外的高度。<br>
+        "dataModel"参数为设置数据对象，默认remote远程请求。
+        本地数据渲染，在"dataModel"配置 "location"为"local"以及"data"为数据。
+        `,
+      htmlCode:
+        `<div id='grid'></div>`,
+      jsCode:
+        `var columns = [
+  { display: 'rank', name: 'rank', width: 60 },
+  { display: 'company', name: 'company', width: 160 },
+  { display: 'revenues', name: 'revenues', width: 160 },
+]
+var paramObj = {
+  height: 400,
+  // inWindowHeight: true,
+  columns: columns,
+  dataModel: {
+    url: 'http://118.178.184.131:9090/static_column/grid',
+  }
+};
+$('#grid').etGrid(paramObj)`,
+      col: 2,
+    })
+  </script>
+</body>
+
+</html>
