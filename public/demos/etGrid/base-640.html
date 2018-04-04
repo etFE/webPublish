@@ -29,17 +29,17 @@
         height: 300,
         // inWindowHeight: true,
         columns: [{
-          display: 'rank',
-          name: 'rank',
-          width: 60
+          display: 'a',
+          name: 'a',
+          width: 120
         }, {
-          display: 'company',
-          name: 'company',
-          width: 160,
+          display: 'b',
+          name: 'b',
+          width: 120,
         }, {
-          display: 'revenues',
-          name: 'revenues',
-          width: 160
+          display: 'c',
+          name: 'c',
+          width: 120
         }],
         dataModel: {
           url: 'http://118.178.184.131:9090/static_column/grid',
@@ -56,12 +56,12 @@
         `<div id='grid'></div>`,
       jsCode:
         `var columns = [
-  { display: 'rank', name: 'rank', width: 60 },
-  { display: 'company', name: 'company', width: 160 },
-  { display: 'revenues', name: 'revenues', width: 160 },
+  { display: 'a', name: 'a', width: 120 },
+  { display: 'b', name: 'b', width: 120 },
+  { display: 'c', name: 'c', width: 120 },
 ]
 var paramObj = {
-  height: 400,
+  height: 300,
   // inWindowHeight: true,
   columns: columns,
   dataModel: {
